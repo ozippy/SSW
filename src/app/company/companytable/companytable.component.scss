@@ -1,0 +1,13 @@
+@import "~styles.scss";
+
+table {  
+  th {
+    background-color: $main-color;
+    color: white;
+  }
+}
+
+.company-row{
+    width: 200px;
+    white-space: nowrap;
+}
