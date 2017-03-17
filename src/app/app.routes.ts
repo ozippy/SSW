@@ -4,6 +4,7 @@ import { CompanyeditComponent } from './company/companyedit/companyedit.componen
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'company/list', pathMatch: 'full' },
+    { path: 'home', loadChildren: 'app/home/home.module#HomeModule'},
     { path: 'company/list', component: CompanyListComponent },
     { path: 'company/edit/:id', component: CompanyeditComponent }
 ];

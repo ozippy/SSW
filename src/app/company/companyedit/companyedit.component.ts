@@ -30,7 +30,7 @@ export class CompanyeditComponent implements OnInit {
     this.buildForm();
 
     if (!this.isNewCompany) {
-      //To do:;
+      this.getCompany();
     }
   }
 
@@ -47,6 +47,17 @@ export class CompanyeditComponent implements OnInit {
     if (this.isNewCompany) {
       this.companyService.saveCompany(this.companyForm.value)
         .subscribe(() => this.router.navigateByUrl('/company/list'));
+    } else {
+      const newCompany = Object.assign({}, { id: this.companyId }, this.companyForm.value);
+      this.companyService.updateCompany(newCompany)
+        .subscribe(() => this.router.navigateByUrl('/company/list'));
     }
+  }
+
+  getCompany() {
+    this.companyService.getCompany(this.companyId)
+      .subscribe(company => {
+        this.companyForm.patchValue(company);
+      });
   }
 }
